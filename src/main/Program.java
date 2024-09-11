@@ -5,13 +5,15 @@ import java.util.Scanner;
 import controllers.AlunoController;
 
 public class Program {
+	//TODO criar as outras operações como excluir editar e consultar 
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("\nSISTEMA DE CADASTRO DE ALUNOS!\n");
 
-		System.out.println("(1) CADASTRAR ALUNOS");
+		System.out.println("(1) CADASTRAR ALUNO");
+		System.out.println("(2) ALTERAR ALUNO");
 
 		System.out.println("\nINFORME A OPÇÃO DESEJADA: ");
 		var opcao = scanner.nextLine();
@@ -20,8 +22,10 @@ public class Program {
 
 		switch (opcao) {
 		case "1":
-			alunoController.cadastrarProduto();
+			alunoController.inserirAluno();
 			break;
+		case "2":
+			alunoController.alterarAluno();
 		}
 
 		System.out.println("\nDESEJA CONTINUAR (S/N): ");
