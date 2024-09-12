@@ -10,13 +10,12 @@ public class Aluno {
 
 	}
 
-	public Aluno( String nome, String matricula, String cpf) {
+	public Aluno(String nome, String matricula, String cpf) {
 		this.nome = nome;
 		this.matricula = matricula;
 		this.cpf = cpf;
 	}
 
-	
 	public Integer getIdAluno() {
 		return idAluno;
 	}

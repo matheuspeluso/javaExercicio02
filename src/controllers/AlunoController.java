@@ -36,7 +36,7 @@ public class AlunoController {
 	
 	public void alterarAluno() {
 		try {
-			System.out.println("\nATUALIZAÇÃO DE PRODUTOS: \n");
+			System.out.println("\nATUALIZAÇÃO DE ALUNOS: \n");
 			System.out.println("INFORME O ID ALUNO: ");
 			var id = Integer.parseInt(scanner.nextLine());
 			
@@ -68,7 +68,37 @@ public class AlunoController {
 			}
 		}
 		catch(Exception e) {
-			System.out.println("\nFalha ao atualizar produto!");
+			System.out.println("\nFalha ao atualizar aluno!");
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void excluirAluno() {
+		try {
+			System.out.println("\nEXCLUSÃO DE ALUNOS:");
+			
+			System.out.println("INFORME O ID DO ALUNO: ");
+			var id = Integer.parseInt(scanner.nextLine());
+			
+			var alunosRepository = new AlunosRepository();
+			var aluno = alunosRepository.obterPorId(id);
+			
+			if(aluno != null) {
+				System.out.println("\nDADOS DO ALUNO:");
+				System.out.println("ID........: " + aluno.getIdAluno());
+				System.out.println("NOME........: " + aluno.getNome());
+				System.out.println("MATRICULA........: "+ aluno.getMatricula());
+				System.out.println("CPF........: "+ aluno.getCpf());
+				System.out.println("");
+				
+				alunosRepository.excluir(aluno.getIdAluno());
+			}
+			else {
+				System.out.println("\nAluno não encontrado. Verifique o ID informado.");
+			}
+		}
+		catch(Exception e ) {
+			System.out.println("\nFalha ao excluir aluno!");
 			System.out.println(e.getMessage());
 		}
 	}

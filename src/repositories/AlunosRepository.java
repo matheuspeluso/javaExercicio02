@@ -71,4 +71,21 @@ public class AlunosRepository {
 		return aluno;
 	}
 	
+	public void excluir(Integer id) {
+		try {
+			var connection = ConnectionFactory.getConnection();
+			
+			var statement = connection.prepareStatement("DELETE FROM aluno WHERE idaluno=?");
+			statement.setInt(1,id);
+			statement.execute();
+			connection.close();
+			
+			System.out.println("\nALUNO EXCLUIDO COM SUCESSO!");
+		}
+		catch(Exception e) {
+			System.out.println("\nFalha ao excluir aluno!");
+			System.out.println(e.getMessage());
+		}
+	}
+	
 }
