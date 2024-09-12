@@ -15,6 +15,7 @@ public class Program {
 		System.out.println("(1) CADASTRAR ALUNO");
 		System.out.println("(2) ALTERAR ALUNO");
 		System.out.println("(3) EXCLUIR ALUNO");
+		System.out.println("(4) CONSULTAR ALUNO");
 
 		System.out.println("\nINFORME A OPÇÃO DESEJADA: ");
 		var opcao = scanner.nextLine();
@@ -27,8 +28,13 @@ public class Program {
 			break;
 		case "2":
 			alunoController.alterarAluno();
+			break;
 		case "3":
 			alunoController.excluirAluno();
+			break;
+		case "4":
+			alunoController.consultarAlunos();
+			break;
 		}
 		
 

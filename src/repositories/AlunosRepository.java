@@ -1,5 +1,8 @@
 package repositories;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import entities.Aluno;
 import factories.ConnectionFactory;
 
@@ -88,4 +91,32 @@ public class AlunosRepository {
 		}
 	}
 	
+	public List<Aluno> consultar(){
+		var lista = new ArrayList<Aluno>();
+		
+		try {
+			var connection = ConnectionFactory.getConnection();
+			
+			var statement = connection.prepareStatement("SELECT idaluno, nome, matricula, cpf FROM aluno ORDER BY nome");
+			var result = statement.executeQuery();
+			
+			while(result.next()) {
+				var aluno = new Aluno();
+				aluno.setIdAluno(result.getInt("idaluno"));
+				aluno.setNome(result.getString("nome"));
+				aluno.setMatricula(result.getString("matricula"));
+				aluno.setCpf(result.getString("cpf"));
+				
+				lista.add(aluno);
+			}
+			connection.close();
+			
+		}
+		catch(Exception e ) {
+			System.out.println("\nFalha ao consultar alunos!");
+			System.out.println(e.getMessage());
+		}
+		
+		return lista;
+	}
 }
